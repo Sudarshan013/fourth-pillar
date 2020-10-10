@@ -3,13 +3,113 @@
   display: flex;
   justify-content: space-around;
 }
+
+.container{
+  width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .nav__link{
   a{
     text-decoration: none;
   }
 }
+.ml-5{
+  margin-left: 5px;
+}
+.ml-10{
+  margin-left: 10px;
+}
+.mt-10{
+  margin-top: 10px;
+}
+.mb-10{
+  margin-bottom: 10px;
+}
+.center{
+  text-align: center;
+}
+.affected__journalists__cards__wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+
+  .journalist__card {
+    margin-right: 10px;
+    margin-bottom: 15px;
+    width: 30%;
+
+    .journalist__card__header {
+      display: flex;
+      justify-content: space-between;
+
+      // align-items: center;
+      // white-space: nowrap
+      h5 {
+        margin: 0px;
+        white-space: nowrap;
+      }
+      .bp3-text-overflow-ellipsis{
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .journalist__card__header__left {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .journalist__card__body {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+}
+.view__all__crime__details{
+  .spinner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+}
+.see__all__cta{
+  width: 100%;
+  margin:10px 0px;
+  display: flex;
+  justify-content: center;
+}
 @media (min-width: 1200px){
   .bp3-navbar-group{
     // max-width: 1200px;
   }
+}
+.spinner{
+  height: 35vh;
+}
+
+.home__link:hover {
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+.footer__section{
+  height: 120px;
+  color: white;
+  background-color: #191919;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 600;
+  padding-bottom: 15px;
 }
