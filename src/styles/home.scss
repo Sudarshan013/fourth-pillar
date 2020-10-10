@@ -1,0 +1,22 @@
+.hero__section {
+  position: relative;
+  display: flex;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  .hero__img_section{
+    flex-basis: 60%;
+  }
+  img{
+    width: 100%;
+    height: auto;
+  }
+  .hero__content__section{
+    width: 40%;
+  }
+}
+.hero__img__wave{
+  position: absolute;
+  top:420px;
+  width: 100%;
+}
