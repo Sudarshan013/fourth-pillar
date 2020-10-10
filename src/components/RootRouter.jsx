@@ -4,20 +4,25 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from './Home';
 import Dashboard from './Dashboard';
 import Community from './Community';
-import Navbar from './Navbar';
+import CrimeAgainstAllJournalists from "./CrimeAgainstAllJournalists"
+import Footer from './Footer';
 
 export default memo(function RootRouter(props) {
   return (
     <Router>
       <Route exact path="/">
-        <Home {...props}/>
+        <Home {...props} />
       </Route>
       <Route exact path="/dashboard">
-        <Dashboard/>
+        <Dashboard />
+      </Route>
+      <Route exact path="/crimeAgainstJournalists">
+        <CrimeAgainstAllJournalists/>
       </Route>
       <Route exact path="/community">
-        <Community/>
+        <Community />
       </Route>
+      <Footer/>
     </Router>
-  )
+  );
 })
