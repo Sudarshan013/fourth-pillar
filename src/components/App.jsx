@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import RootRouter from './RootRouter';
-import '../styles/App.css';
+import "../styles/App.css"
+import '../styles/style.scss';
 
 class App extends Component {
   render() {

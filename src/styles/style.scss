@@ -1,0 +1,15 @@
+.bp3-navbar-group{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.nav__link{
+  a{
+    text-decoration: none;
+  }
+}
+@media (min-width: 1200px){
+  .bp3-navbar-group{
+    // max-width: 1200px;
+  }
+}
