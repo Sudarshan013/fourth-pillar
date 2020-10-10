@@ -47,11 +47,32 @@ contract main {
     function createNews(string memory _authid,uint _time,string memory _descreption,string memory _id,string memory _categories,string memory _subcategories,string memory _tagged) public{
         newsById[_id]=news(_time,_descreption,_id,_categories,_subcategories,_tagged);
         authorNews[_authid].push(newsById[_id]);
+        if(topTen.length>0){
+       for(int itr=topTen.length-2;itr>=0;itr++){
+         topTen[itr+1]=topTen[itr];
+       }
+       topTen[0]=_id;
+     }
     }
 
     function setCategory(string memory _aid,string memory _nid,string memory _category) public{
         require(string_check(accounts[_aid].id,_aid),'You are not author!');
         newsByCategory[_category].push(_nid);
     }
+
+    function setCategory(string memory _aid,string memory _nid,string memory _category) public{
+      require(string_check(accounts[_aid].id,_aid),'You are not author!');
+      newsByCategory[_category].push(_nid);
+  }
+
+  function tagAccount(string memory _aid,string memory _nid,string memory _pid) public{
+    require(string_check(accounts[_aid].id,_aid),'You are not author!');
+    newsForAcnt[_pid].push(newsById[_nid]);
+  }
+
+  function addImages(string memory _aid,string memory _nid,string memory _ipfs) public{
+    require(string_check(accounts[_aid].id,_aid),'You are not author!');
+    newsImages[_nid]=_ipfs;
+  }
 
 }
