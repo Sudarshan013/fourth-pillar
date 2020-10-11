@@ -22,7 +22,7 @@ console.log(props)
           </div>
           <div className="hero__content__section">
             <h1>The Fourth Pillar</h1>
-            <p>Free and Open Journalism</p>
+            <blockquote>" Freedom of the press is a precious privilege that no country can forego. " - Mahatma Gandhi</blockquote>
           </div>
         </div>
         <div className="chart__section">

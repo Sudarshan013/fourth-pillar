@@ -54,6 +54,7 @@ class HomeNavbarActions extends React.Component{
       </div>
       <div className="nav__link">
       <Button
+      minimal
        intent={
          web3 === undefined ? "none" : "success"
        }
