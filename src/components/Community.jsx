@@ -11,11 +11,11 @@ import {
 } from "react-twitter-embed";
 import "../styles/community.scss"
 
-export default function Community() {
+export default function Community(props) {
   return (
     <div>
       <Navbar>
-        <HomeNavbarActions />
+        <HomeNavbarActions {...props} />
       </Navbar>
       <div className="community mt-20 mb-20">
         <Card elevation={2} className="community__section__card">
@@ -53,4 +53,3 @@ export default function Community() {
     </div>
   );
 }
- 

@@ -9,7 +9,7 @@ import SriramDp from "../static/images/sriram.jpeg";
 import "../styles/aboutUs.scss"
 import CommunityIllustration from "../static/images/9_BLM_SIGNS.svg";
 
-export default memo(function AboutUs() {
+export default memo(function AboutUs(props) {
   const contributors = [
     {
       firstName: "Sudarshan",
@@ -30,7 +30,7 @@ export default memo(function AboutUs() {
     },
     {
       firstName: "Sriram",
-      lastName: "V",
+      lastName: "G",
       description: "I am a techno enthusiastic person",
       displayPic: SriramDp,
       githubLink: "https://github.com/sriram199916",
@@ -40,7 +40,7 @@ export default memo(function AboutUs() {
   return (
     <div>
       <Navbar>
-        <HomeNavbarActions />
+        <HomeNavbarActions {...props} />
       </Navbar>
       <div className="container">
 

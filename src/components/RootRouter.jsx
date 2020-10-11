@@ -14,16 +14,10 @@ export default memo(function RootRouter(props) {
     <Router>
       <Route exact path="/" component={Home}/>
       <Route exact path="/dashboard/:id" component={Dashboard} />
-      <Route exact path="/about_us">
-        <AboutUs {...props} />
-      </Route>
-      <Route exact path="/crimeAgainstJournalists">
-        <CrimeAgainstAllJournalists {...props} />
-      </Route>
+      <Route exact path="/about_us" component={AboutUs} />
+      <Route exact path="/crimeAgainstJournalists" component={CrimeAgainstAllJournalists} />
       <Route exact path="/dashboard/:id/new" component={NewPost} />
-      <Route exact path="/community">
-        <Community {...props} />
-      </Route>
+      <Route exact path="/community" component={Community} />
       <Footer/>
     </Router>
   );
