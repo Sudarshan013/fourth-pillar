@@ -35,12 +35,6 @@ export default class Dashboard extends Component {
      }
    }
 
-   createAccount=async(event)=>{
-   event.preventDefault()
-   const a=await web3.eth.getAccounts()
-   await main.methods.createAccount(this.state.id,this.state.name,this.state.aadhaar,'',false).send({from:a[0]})
-   }
-
    createNews=async(event)=>{
      event.preventDefault()
      const a=await web3.eth.getAccounts()
@@ -51,13 +45,6 @@ export default class Dashboard extends Component {
     return (
       <div>
         Dashboard
-        <form onSubmit={this.createAccount}>
-        <input type="text" placeholder="User ID" value={this.state.id} onChange={(event)=>{this.setState({id:event.target.value})}}/>
-        <input type="text" placeholder="Name" value={this.state.name} onChange={(event)=>{this.setState({name:event.target.value})}}/>
-        <input type="number" placeholder="Aadhaar Number" value={this.state.aadhaar} onChange={(event)=>{this.setState({aadhaar:event.target.value})}}/>
-        <input type="submit" name="Create Account"/>
-        </form>
-        <hr/>
           <form onSubmit={this.createNews}>
           <input type="text" placeholder="Author ID" value={this.state.id} onChange={(event)=>{this.setState({id:event.target.value})}}/>
           <input type="text" placeholder="News ID" value={this.state.nid} onChange={(event)=>{this.setState({nid:event.target.value})}}/>

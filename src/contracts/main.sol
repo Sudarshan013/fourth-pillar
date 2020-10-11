@@ -8,27 +8,23 @@ contract main {
     uint timestamp;
     string descreption;
     string id;
+    string author;
   }
 
  struct account{
-   bool isprivate;
    address payable acntAddress;
-   string id;
-   string name;
-   string profileHash;
-   uint aadhaar;
    uint donated;
    uint received;
  }
 
-  mapping (string => account) public accounts;
+  mapping (address => account) public accounts;
+  mapping (string=>address payable) addresses;
   mapping (string => news) public newsById;
   mapping (string => news[]) public authorNews;
-  mapping (string => string) public newsImages;
+  mapping (string => string[]) public newsImages;
   mapping (string => news[]) public newsByCategory;
   mapping (string => news[]) public newsForAcnt;
   mapping (string => string[]) public verifiedNews;
-  mapping (uint => string) public identity;
   mapping (string => string[]) public categoriesForNews;
   mapping (string => string[]) public taggedForNews;
 
@@ -36,22 +32,19 @@ contract main {
         return (keccak256(abi.encodePacked(str1)) == keccak256(abi.encodePacked(str2)));
     }
 
-    function createAccount(string memory _id,string memory _name,uint _aadhaar,string memory _profile,bool _flag) public{
-      require(string_check(accounts[_id].id,''),'Id already in use!');
-      require(string_check(identity[_aadhaar],''),'Aadhaar id already in use!');
-      accounts[_id]=account(_flag,msg.sender,_id,_name,_profile,_aadhaar,0,0);
-      identity[_aadhaar]=_id;
-    }
-
-    function createNews(string memory _authid,uint _time,string memory _descreption,string memory _id,string[] memory _categories,string[] memory _tagged) public{
-      require(!string_check(accounts[_authid].id,''),'Not a valid Account!');
-        newsById[_id]=news(_time,_descreption,_id);
-        authorNews[_authid].push(newsById[_id]);
+    function createNews(string memory _hashedaddr,uint _time,string memory _descreption,string memory _id,string[] memory _categories,string[] memory _tagged) public{
+        if(addresses[_hashedaddr]==address(0)){
+        addresses[_hashedaddr]=msg.sender;
+        accounts[msg.sender]=account(msg.sender,0,0);
+      }
+        newsById[_id]=news(_time,_descreption,_id,_hashedaddr);
+        authorNews[_hashedaddr].push(newsById[_id]);
         for(uint itr=0;itr<_categories.length;itr++){
           categoriesForNews[_id].push(_categories[itr]);
           newsByCategory[_categories[itr]].push(newsById[_id]);
         }
         for(uint itr=0;itr<_tagged.length;itr++){
+          taggedForNews[_id].push(_tagged[itr]);
           newsForAcnt[_tagged[itr]].push(newsById[_id]);
         }
         if(topTen.length==10){
@@ -64,9 +57,9 @@ contract main {
      topTen.push(_id);
     }
 
-  function addImages(string memory _aid,string memory _nid,string memory _ipfs) public{
-    require(string_check(accounts[_aid].id,_aid),'You are not author!');
-    newsImages[_nid]=_ipfs;
+  function addImages(string memory _auth,string memory _nid,string memory _ipfs) public{
+    require(string_check(_auth,newsById[_nid].author),'You are not author!');
+    newsImages[_nid].push(_ipfs);
   }
 
   function verification(string memory _newsId,string memory _acntId,string[] memory _tagged) public{
@@ -111,9 +104,13 @@ contract main {
   }
 
   function tipAccount(string memory _sender,string memory _receiver) public payable{
-    (accounts[_receiver].acntAddress).transfer(msg.value);
-    accounts[_receiver].received+=msg.value;
-    accounts[_sender].donated+=msg.value;
+    if(addresses[_sender]==address(0)){
+    addresses[_sender]=msg.sender;
+    accounts[msg.sender]=account(msg.sender,0,0);
+  }
+    (addresses[_receiver]).transfer(msg.value);
+    accounts[addresses[_receiver]].received+=msg.value;
+    accounts[msg.sender].donated+=msg.value;
   }
 
 }
