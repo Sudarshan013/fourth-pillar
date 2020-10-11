@@ -3,20 +3,23 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 export default function HomeNavbarActions() {
-  const centerNavActions = [{
-    id: "wfp",
-    label: "Why Fourth Pillar",
-    linkTo:"/"
-  }, {
+  const centerNavActions = [
+    {
+      id: "wfp",
+      label: "Why Fourth Pillar",
+      linkTo: "/",
+    },
+    {
       id: "about_us",
       label: "About us",
-      linkTo:"/"
-    }, {
+      linkTo: "/about_us",
+    },
+    {
       id: "community",
       label: "Community",
-      linkTo:"/"
-    }
-  ]
+      linkTo: "/community",
+    },
+  ];
   return (
     <>
       <div className="nav__link">

@@ -6,6 +6,7 @@ import Dashboard from './Dashboard';
 import Community from './Community';
 import CrimeAgainstAllJournalists from "./CrimeAgainstAllJournalists"
 import Footer from './Footer';
+import AboutUs from './AboutUs';
 
 export default memo(function RootRouter(props) {
   return (
@@ -15,6 +16,9 @@ export default memo(function RootRouter(props) {
       </Route>
       <Route exact path="/dashboard">
         <Dashboard />
+      </Route>
+      <Route exact path="/about_us">
+        <AboutUs/>
       </Route>
       <Route exact path="/crimeAgainstJournalists">
         <CrimeAgainstAllJournalists/>

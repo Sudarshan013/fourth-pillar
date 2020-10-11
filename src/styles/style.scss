@@ -20,14 +20,26 @@
 .ml-5{
   margin-left: 5px;
 }
+.mt-5{
+  margin-top: 5px;
+}
 .ml-10{
   margin-left: 10px;
 }
 .mt-10{
   margin-top: 10px;
 }
+.mt-20{
+  margin-top: 20px;
+}
+.mr-10{
+  margin-right: 10px;
+}
 .mb-10{
   margin-bottom: 10px;
+}
+.mb-20{
+  margin-bottom: 20px;
 }
 .center{
   text-align: center;
@@ -102,8 +114,25 @@ a:hover{
   text-decoration: none;
 }
 
+body {
+  height: 100vh;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__section {
+  min-height: 120px;
+}
+
 .footer__section{
-  height: 120px;
+  margin-top: auto;
+  width: 100%;
+  // position: absolute;
+  bottom: 0px;
   color: white;
   background-color: #191919;
   display: flex;
