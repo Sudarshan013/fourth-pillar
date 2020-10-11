@@ -9,7 +9,7 @@ let web3;
         web3 = new Web3(window.web3.currentProvider)
       }
       else {
-        window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+        web3="Not_Found"
       }
 
   export default web3;

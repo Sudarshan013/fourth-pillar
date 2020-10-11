@@ -1,4 +1,4 @@
-import { Button } from '@blueprintjs/core'
+import { Button,Toaster } from '@blueprintjs/core'
 import React from 'react'
 import web3 from './web3'
 import { NavLink } from 'react-router-dom'
@@ -21,6 +21,10 @@ const centerNavActions = [
   },
 ];
 
+const globalToast = Toaster.create({
+  position: 'top'
+})
+
 class HomeNavbarActions extends React.Component{
 
 
@@ -30,11 +34,22 @@ class HomeNavbarActions extends React.Component{
    };
 
    loadBlockchain = async () => {
+     if(web3!=="Not_Found"){
      this.setState({ web3 });
      const accounts = await web3.eth.getAccounts();
      console.log(accounts);
      this.setState({ account: accounts[0] });
      this.handleAccessToDashboard(accounts[0])
+   }
+   else{
+     globalToast.show({message:"Feel free to install Metamask and join us in building the Fourth Pillar",intent: 'warning',
+            action: {
+              href: 'https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en',
+              target: "_blank",
+              text: 'Install Metamask'
+            },
+            timeout: 10000})
+   }
    };
 
    handleAccessToDashboard = (account) => {
