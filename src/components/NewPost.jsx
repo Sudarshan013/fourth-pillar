@@ -8,7 +8,11 @@ import { TextArea } from "@blueprintjs/core";
 export default class NewPost extends Component {
 
   componentDidMount(){
-      this.setState({id:this.props.match.params.id,nid:this.props.match.params.id})
+     var d = new Date()
+     var n = d.getTime()
+     let timestamp=n.toString()
+     let newsid=this.props.match.params.id+timestamp
+      this.setState({id:this.props.match.params.id,nid:newsid})
   }
 
   constructor(props) {
@@ -159,7 +163,7 @@ export default class NewPost extends Component {
                     aria-describedby="emailHelp"
                     placeholder="Enter Tagged People"
                   />
-                  <IPFSManager label="Upload Proof of Work:" dataHandler={this.onIpfsHashChange}/>
+                  <IPFSManager label="Upload Proof:" dataHandler={this.onIpfsHashChange}/>
                 <button
                   type="submit"
                   className="mt-10"

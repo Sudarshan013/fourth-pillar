@@ -5,7 +5,7 @@ let instance;
 if(web3!=="Not_Found"){
 instance = new web3.eth.Contract(
     main.abi,
-    main.networks[5777].address
+    '0xdFa0B79838d116820656BADD51675C43498c4b50'
   );
 }
 else{
