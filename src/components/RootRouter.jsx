@@ -7,6 +7,7 @@ import Community from './Community';
 import CrimeAgainstAllJournalists from "./CrimeAgainstAllJournalists"
 import Footer from './Footer';
 import AboutUs from './AboutUs';
+import NewPost from "./NewPost"
 
 export default memo(function RootRouter(props) {
   return (
@@ -22,6 +23,9 @@ export default memo(function RootRouter(props) {
       </Route>
       <Route exact path="/crimeAgainstJournalists">
         <CrimeAgainstAllJournalists/>
+      </Route>
+      <Route exact path="/dashboard/new">
+        <NewPost/>
       </Route>
       <Route exact path="/community">
         <Community />

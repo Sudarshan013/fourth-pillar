@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react'
-import HomeNavbarActions from './HomeNavbarActions'
-import Navbar from './Navbar'
-import HeroImage from "../static/images/9_BLM_SIGNS.svg"
-import "../styles/home.scss"
-import CrimeChart from "./CrimeChart"
-import AffectedJournalistCard from './AffectedJournalistCard'
-import { Button } from '@blueprintjs/core'
-import { Link, NavLink } from 'react-router-dom'
+import React, { Fragment } from "react";
+import HomeNavbarActions from "./HomeNavbarActions";
+import Navbar from "./Navbar";
+import HeroImage from "../static/images/9_BLM_SIGNS.svg";
+import "../styles/home.scss";
+import CrimeChart from "./CrimeChart";
+import AffectedJournalistCard from "./AffectedJournalistCard";
+import { Button } from "@blueprintjs/core";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Home() {
   return (
