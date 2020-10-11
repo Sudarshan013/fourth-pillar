@@ -3,6 +3,9 @@ import React, { memo } from 'react'
 import HomeNavbarActions from './HomeNavbarActions'
 import Navbar from './Navbar'
 import SudarshanDP from "../static/images/sudo.jpeg";
+import SivaDP from "../static/images/siva.jpeg"
+import SriramDp from "../static/images/sriram.jpeg";
+
 import "../styles/aboutUs.scss"
 import CommunityIllustration from "../static/images/9_BLM_SIGNS.svg";
 
@@ -20,15 +23,17 @@ export default memo(function AboutUs() {
     {
       firstName: "Siva",
       lastName: "Subramaniam",
-      description: "",
-      githubLink: "",
-      linkedinLink: "",
+      description: "just take a <br>",
+      displayPic: SivaDP,
+      githubLink: "https://github.com/sivasubramanian8055",
+      linkedinLink: "https://www.linkedin.com/in/siva-subramanian-b907b622/",
     },
     {
       firstName: "Sriram",
       lastName: "V",
-      description: "",
-      githubLink: "",
+      description: "I am a techno enthusiastic person",
+      displayPic: SriramDp,
+      githubLink: "https://github.com/sriram199916",
       linkedinLink: "",
     },
   ];
