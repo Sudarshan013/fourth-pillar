@@ -17,7 +17,7 @@
     text-decoration: none;
   }
 }
-.ml-5{
+.ml_5{
   margin-left: 5px;
 }
 .mt-5{
@@ -63,7 +63,6 @@
       // white-space: nowrap
       h5 {
         margin: 0px;
-        white-space: nowrap;
       }
       .bp3-text-overflow-ellipsis{
         display: flex;
@@ -74,6 +73,7 @@
     .journalist__card__header__left {
       display: flex;
       align-items: flex-start;
+      justify-content: flex-start;
     }
 
     .journalist__card__body {

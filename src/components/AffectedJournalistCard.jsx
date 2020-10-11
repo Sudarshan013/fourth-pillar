@@ -57,13 +57,15 @@ export default function AffectedJournalistCard(props) {
               <div className="journalist__card__header">
                 <div className="journalist__card__header__left">
                   <H5>{fullName}</H5>
-                  <a href={mtpage} target="_blank">
-                    <Icon icon="paperclip" className="ml-5" />
-                  </a>
+                  <span>
+                    <a href={mtpage} target="_blank">
+                      <Icon icon="paperclip" className="ml_5" />
+                    </a>
+                  </span>
                   <span>
                     <Tooltip content={`${location}, ${country}`}>
                       <img
-                        className="ml-5"
+                        className="ml_5"
                         width="20"
                         alt={country}
                         src={`https://www.countryflags.io/${countryCode}/shiny/64.png`}
