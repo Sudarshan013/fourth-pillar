@@ -1,10 +1,15 @@
-import Portis from "@portis/web3";
-import Web3 from "web3";
-
+import Web3 from 'web3';
+import Portis from '@portis/web3';
 let web3;
+    if (window.ethereum) {
+        web3 = new Web3(window.ethereum)
+        window.ethereum.enable()
+      }
+      else if (window.web3) {
+        web3 = new Web3(window.web3.currentProvider)
+      }
+      else {
+        window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+      }
 
-const portis = new Portis("093f6f84-68a3-4831-9eea-113d337137e4", {
-  nodeUrl: "HTTP://127.0.0.1:8545",
-});
-web3 = new Web3(portis.provider);
-export default web3;
+  export default web3;

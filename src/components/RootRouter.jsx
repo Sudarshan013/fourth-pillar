@@ -12,23 +12,17 @@ import NewPost from "./NewPost"
 export default memo(function RootRouter(props) {
   return (
     <Router>
-      <Route exact path="/">
-        <Home {...props} />
-      </Route>
-      <Route exact path="/dashboard">
-        <Dashboard />
-      </Route>
+      <Route exact path="/" component={Home}/>
+      <Route exact path="/dashboard/:id" component={Dashboard} />
       <Route exact path="/about_us">
-        <AboutUs/>
+        <AboutUs {...props} />
       </Route>
       <Route exact path="/crimeAgainstJournalists">
-        <CrimeAgainstAllJournalists/>
+        <CrimeAgainstAllJournalists {...props} />
       </Route>
-      <Route exact path="/dashboard/new">
-        <NewPost/>
-      </Route>
+      <Route exact path="/dashboard/:id/new" component={NewPost} />
       <Route exact path="/community">
-        <Community />
+        <Community {...props} />
       </Route>
       <Footer/>
     </Router>

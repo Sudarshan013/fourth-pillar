@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ipfs-http-client": "^33.1.1",
     "@blueprintjs/core": "^3.33.0",
     "@portis/web3": "^2.0.0-beta.59",
     "@testing-library/jest-dom": "^4.2.4",

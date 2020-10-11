@@ -2,21 +2,34 @@ import React, { Component } from 'react'
 import web3 from "./web3";
 import main from "./main";
 import Navbar from './Navbar';
-
+import IPFSManager from './IPFSManager';
+import { TextArea } from "@blueprintjs/core";
 
 export default class NewPost extends Component {
+
+  componentDidMount(){
+      this.setState({id:this.props.match.params.id,nid:this.props.match.params.id})
+  }
+
   constructor(props) {
     super(props);
     this.state = {
       id: "",
       name: "",
+      title:"",
       aadhaar: 0,
       desc: "",
       nid: "",
       categories: [],
       tagged: [],
+      ipfsHash:''
     };
   }
+
+  onIpfsHashChange=(hash)=>{
+       this.setState({ipfsHash:hash})
+
+     }
 
   createNews = async (event) => {
     // event.preventDefault();
@@ -24,6 +37,8 @@ export default class NewPost extends Component {
     await main.methods
       .createNews(
         this.state.id,
+        this.state.title,
+        this.state.ipfsHash,
         Date.now().toString(),
         this.state.desc,
         this.state.nid,
@@ -32,7 +47,10 @@ export default class NewPost extends Component {
       )
       .send({ from: a[0] });
   };
+
   render() {
+    console.log(this.props)
+
     return (
       <div>
           <Navbar/>
@@ -51,14 +69,28 @@ export default class NewPost extends Component {
                   <input
                     name="schemeName"
                     value={this.state.id}
-                    onChange={(event) => {
-                      this.setState({ id: event.target.value });
-                    }}
+                    disabled={true}
                     type="text"
                     className="form-control"
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     placeholder="Author ID "
+                  />
+
+                  <label className="mt-2" htmlFor="exampleInputEmail1">
+                    Title
+                  </label>
+                  <input
+                    name="schemeName"
+                    value={this.state.title}
+                    onChange={(event) => {
+                      this.setState({title: event.target.value });
+                    }}
+                    type="text"
+                    className="form-control"
+                    id="exampleInputEmail1"
+                    aria-describedby="emailHelp"
+                    placeholder="Title"
                   />
 
                   <label
@@ -71,9 +103,7 @@ export default class NewPost extends Component {
                   <input
                     name="schemeCode"
                     value={this.state.nid}
-                    onChange={(event) => {
-                      this.setState({ nid: event.target.value });
-                    }}
+                    disabled={true}
                     className="form-control"
                     id=""
                     aria-describedby="emailHelp"
@@ -83,7 +113,7 @@ export default class NewPost extends Component {
                   <label className="mt-2" htmlFor="">
                     Description
                   </label>
-                  <input
+                  <TextArea
                     name="ministry"
                     value={this.state.desc}
                     onChange={(event) => {
@@ -129,6 +159,7 @@ export default class NewPost extends Component {
                     aria-describedby="emailHelp"
                     placeholder="Enter Tagged People"
                   />
+                  <IPFSManager label="Upload Proof of Work:" dataHandler={this.onIpfsHashChange}/>
                 <button
                   type="submit"
                   className="mt-10"

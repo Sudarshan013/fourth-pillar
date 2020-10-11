@@ -8,11 +8,12 @@ import AffectedJournalistCard from "./AffectedJournalistCard";
 import { Button } from "@blueprintjs/core";
 import { Link, NavLink } from "react-router-dom";
 
-export default function Home() {
+export default function Home(props) {
+console.log(props)
   return (
     <Fragment>
       <Navbar>
-        <HomeNavbarActions />
+        <HomeNavbarActions {...props}/>
       </Navbar>
       <div className="container">
         <div className="hero__section">

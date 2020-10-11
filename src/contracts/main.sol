@@ -7,6 +7,7 @@ contract main {
   struct news{
     uint timestamp;
     string descreption;
+    string title;
     string id;
     string author;
   }
@@ -32,12 +33,12 @@ contract main {
         return (keccak256(abi.encodePacked(str1)) == keccak256(abi.encodePacked(str2)));
     }
 
-    function createNews(string memory _hashedaddr,uint _time,string memory _descreption,string memory _id,string[] memory _categories,string[] memory _tagged) public{
+    function createNews(string memory _hashedaddr,string memory _title,string memory _ipfs,uint _time,string memory _descreption,string memory _id,string[] memory _categories,string[] memory _tagged) public{
         if(addresses[_hashedaddr]==address(0)){
         addresses[_hashedaddr]=msg.sender;
         accounts[msg.sender]=account(msg.sender,0,0);
       }
-        newsById[_id]=news(_time,_descreption,_id,_hashedaddr);
+        newsById[_id]=news(_time,_descreption,_title,_id,_hashedaddr);
         authorNews[_hashedaddr].push(newsById[_id]);
         for(uint itr=0;itr<_categories.length;itr++){
           categoriesForNews[_id].push(_categories[itr]);
@@ -55,6 +56,7 @@ contract main {
      }
      else
      topTen.push(_id);
+     newsImages[_id].push(_ipfs);
     }
 
   function addImages(string memory _auth,string memory _nid,string memory _ipfs) public{
